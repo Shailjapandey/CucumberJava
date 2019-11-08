@@ -1,0 +1,67 @@
+package action;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+
+import BrowserConfiguration.CustomChromeDriver;
+import HelperPackages.ButtonHelper;
+import cucumber.annotation.en.Given;
+import cucumber.annotation.en.Then;
+import cucumber.annotation.en.When;
+
+public class CompositeActionsStepDfn {
+	
+	private WebDriver driver;
+	private ButtonHelper buttonHelper;
+	private CustomChromeDriver customChromeDriver;
+	private Actions actions;
+	private Action action;
+	
+	@Given("^Action_I navigate to the webpage \"([^\"]*)\"$")
+	public void Action_I_navigate_to_the_webpage(String webpage) {
+		customChromeDriver = new CustomChromeDriver();
+		driver = customChromeDriver.LaunchChromeDriver(driver, webpage);
+		buttonHelper = ButtonHelper.getInstance(driver);
+	    
+	}
+
+	@When("^Action_I create composite action for context click$")
+	public void Action_I_create_composite_action_for_context_click() {
+		actions = new Actions(driver);
+		actions = actions.contextClick(driver.findElement(By.xpath("//span[text()='Draggable 1']")));
+	}
+	
+	@When("^Action_I create composite action for drang and drop$")
+	public void Action_I_create_composite_action_for_drang_and_drop() {
+		WebElement source = driver.findElement(By.xpath("//span[text()='Draggable 2']"));
+		WebElement target = driver.findElement(By.id("mydropzone"));
+		actions = new Actions(driver);
+		actions.dragAndDrop(source, target);
+	}
+
+	@Then("^Action_I build the action$")
+	public void Action_I_build_the_action() {
+		action = actions.build();
+	   
+	}
+
+	@Then("^Action_I perform the action$")
+	public void Action_I_perform_the_action() {
+		
+		action.perform();
+	}
+	
+	
+	@Then("^Action_I close the browser$")
+	public void Action_I_close_the_browser() throws InterruptedException {
+		Thread.sleep(3000);
+		driver.quit();
+	    
+	}
+
+
+
+}
