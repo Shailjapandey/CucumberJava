@@ -9,9 +9,3 @@ Scenario: Working with context click
     And Action_I perform the action
     Then Action_I close the browser
     
-Scenario: Working with drag and drop
-	
-	 When Action_I create composite action for drang and drop
-	 Then Action_I build the action
-	 And Action_I perform the action
-     Then Action_I close the browser

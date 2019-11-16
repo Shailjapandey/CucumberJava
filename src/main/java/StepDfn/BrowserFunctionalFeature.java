@@ -4,8 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import HelperPackages.BrowserHelperClass;
-import cucumber.annotation.en.Given;
-import cucumber.annotation.en.When;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
+
 
 public class BrowserFunctionalFeature {
 

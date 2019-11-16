@@ -8,24 +8,29 @@ import org.openqa.selenium.interactions.Actions;
 
 import BrowserConfiguration.CustomChromeDriver;
 import HelperPackages.ButtonHelper;
-import cucumber.annotation.en.Given;
-import cucumber.annotation.en.Then;
-import cucumber.annotation.en.When;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
 
 public class CompositeActionsStepDfn {
 	
 	private WebDriver driver;
-	private ButtonHelper buttonHelper;
 	private CustomChromeDriver customChromeDriver;
 	private Actions actions;
 	private Action action;
+	private ButtonHelper buttonHelper;
 	
+	
+	 
 	@Given("^Action_I navigate to the webpage \"([^\"]*)\"$")
 	public void Action_I_navigate_to_the_webpage(String webpage) {
 		customChromeDriver = new CustomChromeDriver();
-		driver = customChromeDriver.LaunchChromeDriver(driver, webpage);
+		driver = customChromeDriver.LaunchChromeDriver(driver);
+		driver.get(webpage);
 		buttonHelper = ButtonHelper.getInstance(driver);
-	    
+		System.out.println("Start Browser");
+	
 	}
 
 	@When("^Action_I create composite action for context click$")

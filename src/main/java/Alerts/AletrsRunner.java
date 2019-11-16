@@ -1,15 +1,16 @@
 package Alerts;
 
-import org.junit.runner.RunWith;
 
-import cucumber.junit.Cucumber;
 
-@RunWith(Cucumber.class)
-@Cucumber.Options(
-		features = ".//Alerts", //the path of the feature files
-		glue= "Alerts",
-		dryRun= true,
+import cucumber.api.CucumberOptions;
+import cucumber.api.testng.AbstractTestNGCucumberTests;
+
+
+@CucumberOptions(
+		features = {"src\\main\\java\\Alerts\\Alerts.feature"}, //the path of the feature files
+		glue= {"Alerts"},
+		dryRun= false,
 		monochrome = true) 
-public class AletrsRunner {
+public class AletrsRunner  extends AbstractTestNGCucumberTests{
 
 }

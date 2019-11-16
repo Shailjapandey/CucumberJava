@@ -1,14 +1,15 @@
 package webelement;
 
-import org.junit.runner.RunWith;
 
-import cucumber.junit.Cucumber;
+import cucumber.api.CucumberOptions;
+import cucumber.api.testng.AbstractTestNGCucumberTests;
 
-@RunWith(Cucumber.class) 
-@Cucumber.Options(
-		features = ".//webelement", //the path of the feature files
-		glue= "webelement") 
 
-public class WebelementFunctionRunner {
+
+@CucumberOptions(
+		features = {"src/main/java/webelement/WebelementFunction.feature"}, //the path of the feature files
+		glue= {"webelement"}) 
+
+public class WebelementFunctionRunner extends AbstractTestNGCucumberTests{
 
 }

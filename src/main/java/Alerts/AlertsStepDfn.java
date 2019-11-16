@@ -6,9 +6,10 @@ import org.openqa.selenium.WebDriver;
 import BrowserConfiguration.CustomChromeDriver;
 import HelperPackages.AlertHelper;
 import HelperPackages.ButtonHelper;
-import cucumber.annotation.en.Given;
-import cucumber.annotation.en.Then;
-import cucumber.annotation.en.When;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
 
 public class AlertsStepDfn {
 
@@ -21,7 +22,8 @@ public class AlertsStepDfn {
 	public void Aletrs_I_navigate_to_the_webpage(String page) {
 
 		customChromeDriver = new CustomChromeDriver();
-		driver = customChromeDriver.LaunchChromeDriver(driver, page);
+		driver = customChromeDriver.LaunchChromeDriver(driver);
+		driver.get(page);
 		buttonHelper = ButtonHelper.getInstance(driver);
 		alertHelper = AlertHelper.getInstance(driver);
 		

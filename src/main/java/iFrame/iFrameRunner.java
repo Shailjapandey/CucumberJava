@@ -1,16 +1,19 @@
 package iFrame;
 
-import org.junit.runner.RunWith;
-import cucumber.junit.Cucumber;
 
-	@RunWith(Cucumber.class) 
-	@Cucumber.Options(
-			features = ".//iFrame", //the path of the feature files
-			glue= "iFrame",
+
+import cucumber.api.CucumberOptions;
+import cucumber.api.testng.AbstractTestNGCucumberTests;
+
+
+	 
+	@CucumberOptions (
+			features = {"src/main/java/iFrame/iframe.feature"}, //the path of the feature files
+			glue= {"iFrame"},
 			dryRun= false,
 			monochrome = true) 
 
-	public class iFrameRunner  {
+	public class iFrameRunner extends AbstractTestNGCucumberTests  {
 
 	}
 

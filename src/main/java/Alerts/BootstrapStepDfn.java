@@ -4,23 +4,28 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import BrowserConfiguration.CustomChromeDriver;
 import HelperPackages.ButtonHelper;
-import cucumber.annotation.en.Given;
-import cucumber.annotation.en.Then;
-import cucumber.annotation.en.When;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
 
 public class BootstrapStepDfn {
 	
-	private WebDriver driver;
+	
 	private CustomChromeDriver customChromeDriver;
+	private WebDriver driver;
 	private ButtonHelper buttonHelper;
-
+	
+	
+	
 @Given("^Bootstrap_I open the application \"([^\"]*)\"$")
 public void Bootstrap_I_open_the_application(String page) {
 	customChromeDriver = new CustomChromeDriver();
-	driver =  customChromeDriver.LaunchChromeDriver(driver, page);
+	driver =  customChromeDriver.LaunchChromeDriver(driver);
+	driver.get("https://www.seleniumeasy.com/test/bootstrap-modal-demo.html");
+	
 	buttonHelper = ButtonHelper.getInstance(driver);
 }
 

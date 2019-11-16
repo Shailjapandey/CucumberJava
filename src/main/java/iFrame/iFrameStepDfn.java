@@ -14,25 +14,30 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import BrowserConfiguration.CustomChromeDriver;
 import HelperPackages.ButtonHelper;
 import HelperPackages.WindowHelper;
-import cucumber.annotation.en.Given;
-import cucumber.annotation.en.Then;
-import cucumber.annotation.en.When;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import services.DriverService;
 
 public class iFrameStepDfn {
 	
+	
 	private WebDriver driver;
 	private ButtonHelper buttonHelper;
-	private CustomChromeDriver customChromeDriver;
 	private WindowHelper windowHelper;
 	private ArrayList<String> windowId;
+	private CustomChromeDriver customChromeDriver;
+ 
 
-	
 	
 	@Given("^MultipleWindow_I open the web page \"([^\"]*)\"$")
 	public void MultipleWindow_I_open_the_web_page(String webpage) {
 		
+		
+		
 		customChromeDriver = new CustomChromeDriver();
-		driver = customChromeDriver.LaunchChromeDriver(driver, webpage);
+		driver = customChromeDriver.LaunchChromeDriver(driver);
+		driver.get(webpage);
 		buttonHelper = ButtonHelper.getInstance(driver);
 		WebDriverWait wait = getWait(driver, 60);
 		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("(//a[contains(text(),'Try it Yourself »')])[1]")));
@@ -62,8 +67,8 @@ public class iFrameStepDfn {
 
 	@Then("^MultipleWindow_I click on the element present in parent window$")
 	public void MultipleWindow_I_click_on_the_element_present_in_parent_window() {
-		//driver.switchTo().window(windowId.get(0));
-		windowHelper = WindowHelper.getInstance(driver);
+		driver.switchTo().window(windowId.get(0));
+		//windowHelper = driver.
 		windowHelper.switchWindow(0);
 	}
 

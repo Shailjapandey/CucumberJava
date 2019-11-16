@@ -6,9 +6,10 @@ import org.openqa.selenium.WebElement;
 
 import BrowserConfiguration.CustomChromeDriver;
 import HelperPackages.TextBoxHepler;
-import cucumber.annotation.en.Given;
-import cucumber.annotation.en.Then;
-import cucumber.annotation.en.When;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
 
 public class WebelementFunctionStepDfn {
 	
@@ -20,7 +21,8 @@ public class WebelementFunctionStepDfn {
 	@Given("^WebElementFunction_I open the facebook home page \"([^\"]*)\"$")
 	public void WebElementFunction_I_open_the_facebook_home_page(String URL) {
 		customChromeDriver = new CustomChromeDriver();
-		driver= customChromeDriver.LaunchChromeDriver(driver ,URL);
+		driver= customChromeDriver.LaunchChromeDriver(driver);
+		driver.get(URL);
 	    
 	}
 

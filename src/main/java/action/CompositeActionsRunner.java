@@ -1,17 +1,16 @@
 package action;
 
-import org.junit.runner.RunWith;
+import cucumber.api.CucumberOptions;
+import cucumber.api.testng.AbstractTestNGCucumberTests;
 
-import cucumber.junit.Cucumber;
 
-@RunWith(Cucumber.class) 
-@Cucumber.Options(
-		features = ".//action", //the path of the feature files
-		glue= "action",
+@CucumberOptions(
+		features = {"src/main/java/action/CompositeActions.feature"}, //the path of the feature files
+		glue= {"action"},
 		dryRun= false,
 		monochrome = true) 
 
 
-public class CompositeActionsRunner {
+public class CompositeActionsRunner extends AbstractTestNGCucumberTests {
 
 }
