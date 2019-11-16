@@ -1,5 +1,7 @@
 package action;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import BrowserConfiguration.CustomChromeDriver;
 import HelperPackages.ButtonHelper;
+import HelperPackages.ScreenShotHelper;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -20,6 +23,7 @@ public class CompositeActionsStepDfn {
 	private Actions actions;
 	private Action action;
 	private ButtonHelper buttonHelper;
+	private ScreenShotHelper screenShotHelper;
 	
 	
 	 
@@ -61,7 +65,10 @@ public class CompositeActionsStepDfn {
 	
 	
 	@Then("^Action_I close the browser$")
-	public void Action_I_close_the_browser() throws InterruptedException {
+	public void Action_I_close_the_browser() throws InterruptedException, IOException {
+		screenShotHelper = ScreenShotHelper.getInstance(driver);
+	    screenShotHelper.takeScreenShot("Test", "ScreenShot");
+		
 		Thread.sleep(3000);
 		driver.quit();
 	    
